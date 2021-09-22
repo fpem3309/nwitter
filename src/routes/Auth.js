@@ -27,8 +27,8 @@ const Auth = () => {
                 <input type="submit" value="Log In" />
             </form>
             <div>
-                <button>Continue with Google</button>
-                <button>Continue with Github</button>
+                <button>Continue with Google (회원가입)</button>
+                <button>Continue with Github (회원가입)</button>
             </div>
         </div>
     );

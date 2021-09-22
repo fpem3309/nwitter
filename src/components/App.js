@@ -7,5 +7,4 @@ function App() {
   const [isLoggedIn] = useState(false);
   return <AppRouter isLoggedIn={isLoggedIn} />;
 }
-
 export default App;
