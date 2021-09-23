@@ -1,4 +1,4 @@
-import { authService } from "fbase";
+import { authService, firebaseInstance } from "fbase";
 import React, { useEffect } from "react";
 import { useState } from "react";
 
@@ -35,7 +35,18 @@ const Auth = () => {
         }
         console.log(data);
     };
-    const toggleAccount = () => setNewAccount(prev => !prev) //이전값을 가져와서 그 값의 반대되는 것을 리턴
+    const toggleAccount = () => setNewAccount(prev => !prev); //이전값을 가져와서 그 값의 반대되는 것을 리턴
+    const onSocialClick = async (event) => {
+        const { target: { name }, } = event;
+        let provider;
+        if (name === "google") {
+            provider = new firebaseInstance.auth.GoogleAuthProvider();
+        } else if (name === "github") {
+            provider = new firebaseInstance.auth.GithubAuthProvider();
+        }
+        const data = await authService.signInWithPopup(provider);
+        console.log(data);
+    };
 
     return (
         <div>
@@ -47,8 +58,8 @@ const Auth = () => {
             </form>
             <span onClick={toggleAccount}>{newAccount ? "Sign In" : "Create Account"}</span>
             <div>
-                <button>Continue with Google (회원가입)</button>
-                <button>Continue with Github (회원가입)</button>
+                <button onClick={onSocialClick} name="google">Continue with Google</button>
+                <button onClick={onSocialClick} name="github">Continue with Github</button>
             </div>
         </div>
     );
