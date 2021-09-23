@@ -3,8 +3,17 @@ import AppRouter from "components/Router";
 import { authService } from "fbase";
 
 function App() {
+  const [isLoggedIn] = useState(authService.currentUser);
   console.log(authService.currentUser);
-  const [isLoggedIn] = useState(false);
-  return <AppRouter isLoggedIn={isLoggedIn} />;
+  setInterval(() => {
+    console.log(authService.currentUser);
+  }, 2000);
+
+  return (
+    <>
+      <AppRouter isLoggedIn={isLoggedIn} />
+      <footer>&copy; {new Date().getFullYear()} Home witter</footer>
+    </>
+  );
 }
 export default App;
