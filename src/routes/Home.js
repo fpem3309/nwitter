@@ -1,28 +1,26 @@
 import { dbService } from "fbase";
 import React, { useEffect, useState } from "react";
 
-const Home = () => {
+const Home = ({ userObj }) => {
+    //console.log(userObj);
     const [nweet, setNweet] = useState("");
     const [nweets, setNweets] = useState([]);
-    const getNweets = async () => {
-        const dbNweets = await dbService.collection("nweets").get();
-        dbNweets.forEach(document => {
-            const nweetObject = {
-                ...document.data(),// 모든 document
-                id: document.id,
-            };
-            setNweets((prev) => [nweetObject, ...prev]);
-        });
-    }
 
     useEffect(() => { // component가 mount될때
-        getNweets();
+        dbService.collection("nweets").onSnapshot(snapshot => {
+            const nweetsArray = snapshot.docs.map((doc) => ({
+                id: doc.id,
+                ...doc.data(),
+            }));
+            setNweets(nweetsArray);
+        });
     }, []);
     const onSubmit = async (event) => {
         event.preventDefault();
         await dbService.collection("nweets").add({
             text: nweet,
             createdAt: Date.now(),
+            creatorId: userObj.uid,
         });
         setNweet("");
     };
@@ -30,7 +28,6 @@ const Home = () => {
         const { target: { value }, } = event;    // event안의 target안의 value추출
         setNweet(value);
     };
-    console.log(nweets);
     return (
         <div>
             <form onSubmit={onSubmit}>
@@ -40,7 +37,7 @@ const Home = () => {
             <div>
                 {nweets.map((nweet) => (
                     <div key={nweet.id}>
-                        <h4>{nweet.nweet}</h4>
+                        <h4>{nweet.text}</h4>
                     </div>
                 ))}
             </div>
