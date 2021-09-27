@@ -6,16 +6,22 @@ const Home = () => {
     const [nweets, setNweets] = useState([]);
     const getNweets = async () => {
         const dbNweets = await dbService.collection("nweets").get();
-        dbNweets.forEach(document => console.log(document.data()));
+        dbNweets.forEach(document => {
+            const nweetObject = {
+                ...document.data(),// 모든 document
+                id: document.id,
+            };
+            setNweets((prev) => [nweetObject, ...prev]);
+        });
     }
 
     useEffect(() => { // component가 mount될때
         getNweets();
-    }, [])
+    }, []);
     const onSubmit = async (event) => {
         event.preventDefault();
         await dbService.collection("nweets").add({
-            nweet,
+            text: nweet,
             createdAt: Date.now(),
         });
         setNweet("");
@@ -24,12 +30,20 @@ const Home = () => {
         const { target: { value }, } = event;    // event안의 target안의 value추출
         setNweet(value);
     };
+    console.log(nweets);
     return (
         <div>
             <form onSubmit={onSubmit}>
                 <input value={nweet} onChange={onChange} type="text" placeholder="What's on your mind?" maxLength={120} />
                 <input type="submit" value="Nweet" />
             </form>
+            <div>
+                {nweets.map((nweet) => (
+                    <div key={nweet.id}>
+                        <h4>{nweet.nweet}</h4>
+                    </div>
+                ))}
+            </div>
         </div>
     );
 };
