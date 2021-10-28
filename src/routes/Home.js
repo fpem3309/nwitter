@@ -1,6 +1,8 @@
 import Nweet from "components/Nweet";
-import { dbService } from "fbase";
+import { v4 as uuidv4 } from "uuid";
+import { dbService, storageService } from "fbase";
 import React, { useEffect, useState } from "react";
+
 
 const Home = ({ userObj }) => {
     //console.log(userObj);
@@ -19,12 +21,15 @@ const Home = ({ userObj }) => {
     }, []);
     const onSubmit = async (event) => {
         event.preventDefault();
-        await dbService.collection("nweets").add({
-            text: nweet,
-            createdAt: Date.now(),
-            creatorId: userObj.uid,
-        });
-        setNweet("");
+        const fileRef = storageService.ref().child(`${userObj.uid}/${uuidv4()}`); //이미지의 path, child를 가짐(파일에 대한 reference)
+        const response = await fileRef.putString(attachment, "data_url");
+        console.log(response);
+        // await dbService.collection("nweets").add({
+        //     text: nweet,
+        //     createdAt: Date.now(),
+        //     creatorId: userObj.uid,
+        // });
+        // setNweet("");
     };
     const onChange = (event) => {
         const { target: { value }, } = event;    // event안의 target안의 value추출
@@ -32,7 +37,7 @@ const Home = ({ userObj }) => {
     };
     const onFileChange = (event) => {
         const { target: { files }, } = event; //event안에서 target안으로 가서 files를 받아옴
-        const theFile = files[0]; // file을 갖고 ( 첫 번째 하나ㅏㄴ)
+        const theFile = files[0]; // file을 갖고 ( 첫 번째 하나만)
         const reader = new FileReader(); // reader를 만든 다음
         reader.onloadend = (finishedEvent) => {
             const {

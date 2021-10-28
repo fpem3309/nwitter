@@ -36,7 +36,8 @@ export default () => {
 
             <div>
                 <h5> 이번주 로또 1등 번호는
-                    <br />{lotto + " "}로 사보시죠!!!!</h5>
+                    <br />{lotto + " "}로 사보시죠!!!!
+                </h5>
             </div>
 
 
