@@ -3,12 +3,11 @@ import { v4 as uuidv4 } from "uuid";
 import { dbService, storageService } from "fbase";
 import React, { useEffect, useState } from "react";
 
-
 const Home = ({ userObj }) => {
     //console.log(userObj);
     const [nweet, setNweet] = useState("");
     const [nweets, setNweets] = useState([]);
-    const [attachment, setAttachment] = useState();
+    const [attachment, setAttachment] = useState("");
 
     useEffect(() => { // component가 mount될때
         dbService.collection("nweets").onSnapshot((snapshot) => {
@@ -19,6 +18,7 @@ const Home = ({ userObj }) => {
             setNweets(nweetsArray);
         });
     }, []);
+
     const onSubmit = async (event) => {
         event.preventDefault();
         const fileRef = storageService.ref().child(`${userObj.uid}/${uuidv4()}`); //이미지의 path, child를 가짐(파일에 대한 reference)
@@ -31,10 +31,12 @@ const Home = ({ userObj }) => {
         // });
         // setNweet("");
     };
+
     const onChange = (event) => {
         const { target: { value }, } = event;    // event안의 target안의 value추출
         setNweet(value);
     };
+
     const onFileChange = (event) => {
         const { target: { files }, } = event; //event안에서 target안으로 가서 files를 받아옴
         const theFile = files[0]; // file을 갖고 ( 첫 번째 하나만)
