@@ -7,7 +7,7 @@ const Home = ({ userObj }) => {
     //console.log(userObj);
     const [nweet, setNweet] = useState("");
     const [nweets, setNweets] = useState([]);
-    const [attachment, setAttachment] = useState("");
+    const [attachment, setAttachment] = useState();
 
     useEffect(() => { // component가 mount될때
         dbService.collection("nweets").onSnapshot((snapshot) => {
@@ -21,15 +21,23 @@ const Home = ({ userObj }) => {
 
     const onSubmit = async (event) => {
         event.preventDefault();
-        const fileRef = storageService.ref().child(`${userObj.uid}/${uuidv4()}`); //이미지의 path, child를 가짐(파일에 대한 reference)
-        const response = await fileRef.putString(attachment, "data_url");
-        console.log(response);
-        // await dbService.collection("nweets").add({
-        //     text: nweet,
-        //     createdAt: Date.now(),
-        //     creatorId: userObj.uid,
-        // });
-        // setNweet("");
+        let attachmentUrl = "";
+        if (attachment != "") {
+            const attachmentRef = storageService
+                .ref()
+                .child(`${userObj.uid}/${uuidv4()}`); //이미지의 path, child를 가짐(파일에 대한 reference)
+            const response = await attachmentRef.putString(attachment, "data_url");
+            attachmentUrl = await response.ref.getDownloadURL();
+        }
+        const nweetObj = {
+            text: nweet,
+            createdAt: Date.now(),
+            creatorId: userObj.uid,
+            attachmentUrl,
+        };
+        await dbService.collection("nweets").add(nweetObj);
+        setNweet("");
+        setAttachment("");
     };
 
     const onChange = (event) => {
