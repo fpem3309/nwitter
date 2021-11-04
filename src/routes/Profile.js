@@ -33,13 +33,11 @@ export default () => {
 
     return (
         <>
-
             <div>
                 <h5> 이번주 로또 1등 번호는
-                    <br />{lotto + " "}로 사보시죠!!!!
+                    <br />{lotto + " "}로!!!! 1등 가즈아~~~!!!!
                 </h5>
             </div>
-
 
             <button onClick={onLogOutClick}>Log Out</button>
         </>
