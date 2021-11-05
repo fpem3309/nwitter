@@ -7,7 +7,7 @@ const Home = ({ userObj }) => {
     //console.log(userObj);
     const [nweet, setNweet] = useState("");
     const [nweets, setNweets] = useState([]);
-    const [attachment, setAttachment] = useState();
+    const [attachment, setAttachment] = useState("");
 
     useEffect(() => { // component가 mount될때
         dbService.collection("nweets").onSnapshot((snapshot) => {
