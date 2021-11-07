@@ -9,6 +9,9 @@ function App() {
     authService.onAuthStateChanged((user) => {
       if (user) {
         setUserObj(user);
+        if (user.displayName === null) {
+          user.updateProfile({ displayName: "민관 주인님", });
+        }
       }
       setInit(true);
     });
