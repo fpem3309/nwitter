@@ -11,7 +11,7 @@ const Navigation = ({ userObj }) => (
                 <Link to="/profile">{userObj.displayName}의 Profile</Link>
             </li>
             <li>
-                Lotto
+                <Link to="/lotto">Lotto</Link>
             </li>
         </ul>
     </nav>
