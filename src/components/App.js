@@ -4,21 +4,36 @@ import { authService } from "fbase";
 
 function App() {
   const [init, setInit] = useState(false); //아직 초기화 x
-  const [userObj, setUserObj] = useState(null);
+  const [userObj, setUserObj] = useState(null); //userObj의 출발점 -> Router.js
   useEffect(() => {
     authService.onAuthStateChanged((user) => {
       if (user) {
-        setUserObj(user);
+        setUserObj({
+          displayName: user.displayName,
+          uid: user.uid,
+          updateProfile: (args) => user.updateProfile(args),
+        });
+
         if (user.displayName === null) {
-          user.updateProfile({ displayName: "민관 주인님", });
+          user.updateProfile({ displayName: "새로운 유저", });
         }
       }
       setInit(true);
     });
-  }, [])
+  }, []);
+
+  const refreshUser = () => { // user를 새로고침
+    const user = authService.currentUser;
+    setUserObj({
+      displayName: user.displayName,
+      uid: user.uid,
+      updateProfile: (args) => user.updateProfile(args),
+    });
+  };
+
   return (
     <>
-      {init ? <AppRouter isLoggedIn={Boolean(userObj)} userObj={userObj} /> : "기달기달 기달기달"}
+      {init ? <AppRouter refreshUser={refreshUser} isLoggedIn={Boolean(userObj)} userObj={userObj} /> : "기달기달 기달기달"}
     </>
   );
 }
