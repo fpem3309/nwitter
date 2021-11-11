@@ -4,8 +4,6 @@ import React, { useState } from "react";
 
 const Auth = () => {
 
-
-
     const onSocialClick = async (event) => {
         const { target: { name }, } = event;
         let provider;

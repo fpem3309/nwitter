@@ -17,6 +17,8 @@ function App() {
         if (user.displayName === null) {
           user.updateProfile({ displayName: "새로운 유저", });
         }
+      } else {
+        setUserObj(null);
       }
       setInit(true);
     });
