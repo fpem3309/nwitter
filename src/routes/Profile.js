@@ -10,6 +10,23 @@ export default ({ refreshUser, userObj }) => {
         history.push("/");
     };
 
+    const onChange = (event) => {
+        const {
+            target: { value },
+        } = event;
+        setNewDisplayName(value);
+    };
+
+    const onSubmit = async (event) => {
+        event.preventDefault();
+        if (userObj.displayName !== newDisplayName) { // 변경 x상태에서 누르면 업데이트x
+            await userObj.updateProfile({
+                displayName: newDisplayName,
+            });
+            refreshUser();
+        }
+    };
+
     const getMyNweets = async () => {
         const nweets = await dbService
             .collection("nweets")
@@ -23,21 +40,7 @@ export default ({ refreshUser, userObj }) => {
         getMyNweets();
     }, [])
 
-    const onChange = (event) => {
-        const {
-            target: { value },
-        } = event;
-        setNewDisplayName(value);
-    };
-    const onSubmit = async (event) => {
-        event.preventDefault();
-        if (userObj.displayName !== newDisplayName) { // 변경 x상태에서 누르면 업데이트x
-            const response = await userObj.updateProfile({
-                displayName: newDisplayName,
-            });
-            refreshUser();
-        }
-    };
+
 
     return (
         <div className="container">
