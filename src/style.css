@@ -274,3 +274,12 @@ form {
     font-size: 12px;
     text-decoration: underline;
   }
+  /* lotto */
+  .lotto_result{
+    color:pink;
+    font-size: 30px;
+  }
+  .my_lotto{
+    color:plum;
+    font-size: 20px;
+  }

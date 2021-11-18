@@ -21,9 +21,9 @@ const Lotto = () => {
 
     return (
         <div>
-            <h5>
-                {lotto + " "}
-            </h5>
+            <p>다음 회차 로또 1등 번호는</p>
+            <p className="my_lotto">{lotto + " "}</p>
+            <a className="lotto_result" href="https://dhlottery.co.kr/gameResult.do?method=byWin">당첨번호 확인하기</a>
         </div>
     );
 }
