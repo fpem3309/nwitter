@@ -5,10 +5,14 @@ import Home from "../routes/Home";
 import Profile from "routes/Profile";
 import Navigation from "components/Navigation";
 import Lotto from "routes/Lotto";
+import Wave from "routes/Wave";
 
 const AppRouter = ({ refreshUser, isLoggedIn, userObj }) => {
     return (
+
+
         <Router>
+            <Wave />
             {isLoggedIn && <Navigation userObj={userObj} />}
             <Switch>
                 {isLoggedIn ? (
