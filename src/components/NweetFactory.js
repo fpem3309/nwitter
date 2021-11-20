@@ -59,7 +59,7 @@ const NweetFactory = ({ userObj }) => {
                     value={nweet}
                     onChange={onChange}
                     type="text"
-                    placeholder="오늘은 무슨일이 있었어??"
+                    placeholder="오늘은 뭐했어??"
                     maxLength={120}
                 />
                 <input type="submit" value="&rarr;" className="factoryInput__arrow" />

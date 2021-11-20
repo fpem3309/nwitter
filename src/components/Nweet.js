@@ -3,11 +3,13 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faPencilAlt } from "@fortawesome/free-solid-svg-icons";
 
+const date = new Date();
+
 const Nweet = ({ nweetObj, isOwner }) => {
     const [editing, setEditing] = useState(false);  // true  false로 edit모드인지 확인
     const [newNweet, setNewNweet] = useState(nweetObj.text);  // input에 입력된 text 업데이트
     const onDeleteClick = async () => {
-        const ok = window.confirm("정말 삭제하시겠슴둥?");
+        const ok = window.confirm("ㄹㅇ 삭제??");
         console.log(ok)
         if (ok) {
             await dbService.doc(`nweets/${nweetObj.id}`).delete(); // documentPath = 위치
@@ -49,14 +51,15 @@ const Nweet = ({ nweetObj, isOwner }) => {
             ) : (
                 <>
                     <h4>{nweetObj.text}</h4>
+                    <h3>{date.toLocaleDateString()}</h3>
                     {nweetObj.attachmentUrl && <img src={nweetObj.attachmentUrl} />}
                     {isOwner && (
                         <div class="nweet__actions">
-                            <span onClick={onDeleteClick}>
-                                <FontAwesomeIcon icon={faTrash} />
-                            </span>
                             <span onClick={toggleEditing}>
                                 <FontAwesomeIcon icon={faPencilAlt} />
+                            </span>
+                            <span onClick={onDeleteClick}>
+                                <FontAwesomeIcon icon={faTrash} />
                             </span>
                         </div>
                     )}

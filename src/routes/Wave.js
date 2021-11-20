@@ -4,7 +4,7 @@ const Wave = () => {
             <div className='wave -one'></div>
             <div className='wave -two'></div>
             <div className='wave -three'></div>
-            <div className='title'>개발 연습중</div>
+            <div className='title'>연습중</div>
         </div>
     );
 }
