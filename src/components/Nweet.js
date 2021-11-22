@@ -51,7 +51,7 @@ const Nweet = ({ nweetObj, isOwner }) => {
                 <>
                     <h4>{nweetObj.text}</h4>
                     <h4>{nweetObj.createdAt}</h4>
-                    {/* <h4>{nweetObj.timpestamp.Date()}</h4> */}
+                    <h4>{nweetObj.creatorId}</h4>
                     {nweetObj.attachmentUrl && <img src={nweetObj.attachmentUrl} />}
                     {isOwner && (
                         <div class="nweet__actions">

@@ -25,7 +25,7 @@ const NweetFactory = ({ userObj }) => {
             createdAt: Date.now(),
             creatorId: userObj.uid,
             attachmentUrl,
-            timestamp: new Date(),
+
         };
         await dbService.collection("nweets").add(nweetObj);
         setNweet("");
