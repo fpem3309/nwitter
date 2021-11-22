@@ -6,7 +6,7 @@ import NweetFactory from "components/NweetFactory";
 const Home = ({ userObj }) => {
     const [nweets, setNweets] = useState([]);
     useEffect(() => { // component가 mount될때
-        dbService.collection("nweets").onSnapshot((snapshot) => {
+        dbService.collection("nweets").orderBy('createdAt', 'desc').onSnapshot((snapshot) => {
             const nweetsArray = snapshot.docs.map((doc) => ({
                 id: doc.id,
                 ...doc.data(),

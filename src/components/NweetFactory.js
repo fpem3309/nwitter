@@ -1,4 +1,4 @@
-import { dbService, storageService } from "fbase";
+import { dbService, firebaseInstance, storageService } from "fbase";
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -25,10 +25,12 @@ const NweetFactory = ({ userObj }) => {
             createdAt: Date.now(),
             creatorId: userObj.uid,
             attachmentUrl,
+            timestamp: new Date(),
         };
         await dbService.collection("nweets").add(nweetObj);
         setNweet("");
         setAttachment("");
+        console.log(nweetObj);
     };
 
     const onChange = (event) => {
