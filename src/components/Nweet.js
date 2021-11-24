@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faPencilAlt } from "@fortawesome/free-solid-svg-icons";
 
 const Nweet = ({ nweetObj, isOwner }) => {
+
     const [editing, setEditing] = useState(false);  // true  false로 edit모드인지 확인
     const [newNweet, setNewNweet] = useState(nweetObj.text);  // input에 입력된 text 업데이트
 
@@ -15,6 +16,14 @@ const Nweet = ({ nweetObj, isOwner }) => {
             await storageService.refFromURL(nweetObj.attachmentUrl).delete(); // 사진 삭제
         }
     };
+
+    const date = new Date(nweetObj.createdAt);
+    const year = date.getFullYear();
+    const month = date.getMonth();
+    const day = date.getDate();
+    const hour = date.getHours();
+    const minute = date.getMinutes();
+
     const toggleEditing = () => setEditing((prev) => !prev);
     const onSubmit = async (event) => {
         event.preventDefault();
@@ -50,8 +59,7 @@ const Nweet = ({ nweetObj, isOwner }) => {
             ) : (
                 <>
                     <h4>{nweetObj.text}</h4>
-                    <h4>{nweetObj.createdAt}</h4>
-                    <h4>{nweetObj.creatorId}</h4>
+                    <h4>{year}-{month}-{day} {hour}:{minute}</h4>
                     {nweetObj.attachmentUrl && <img src={nweetObj.attachmentUrl} alt="upload_img" />}
                     {isOwner && (
                         <div className="nweet__actions">

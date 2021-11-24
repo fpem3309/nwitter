@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { faTwitter } from "@fortawesome/free-brands-svg-icons";
-import { faGrinStars, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faTwitter, faYoutube } from "@fortawesome/free-brands-svg-icons";
+import { faGrinStars, faQuran, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Navigation = ({ userObj }) => (
@@ -9,7 +9,7 @@ const Navigation = ({ userObj }) => (
         <ul style={{ display: "flex", justifyContent: "center", marginTop: 50 }}>
             <li>
                 <Link to="/" style={{ marginRight: 10 }}>
-                    <FontAwesomeIcon icon={faTwitter} color={"#04AAFF"} size="2x" />
+                    <FontAwesomeIcon icon={faQuran} color={"#04AAFF"} size="2x" />
                 </Link>
             </li>
             <li>
@@ -42,6 +42,10 @@ const Navigation = ({ userObj }) => (
                     }}
                 >
                     <FontAwesomeIcon icon={faGrinStars} color={"#04aaFF"} size="2x" />
+                </Link>
+
+                <Link to="youtube">
+                    <FontAwesomeIcon icon={faYoutube} color={"#04aaFF"} size="2x" />
                 </Link>
             </li>
         </ul>
