@@ -52,9 +52,9 @@ const Nweet = ({ nweetObj, isOwner }) => {
                     <h4>{nweetObj.text}</h4>
                     <h4>{nweetObj.createdAt}</h4>
                     <h4>{nweetObj.creatorId}</h4>
-                    {nweetObj.attachmentUrl && <img src={nweetObj.attachmentUrl} />}
+                    {nweetObj.attachmentUrl && <img src={nweetObj.attachmentUrl} alt="upload_img" />}
                     {isOwner && (
-                        <div class="nweet__actions">
+                        <div className="nweet__actions">
                             <span onClick={toggleEditing}>
                                 <FontAwesomeIcon icon={faPencilAlt} />
                             </span>
@@ -67,6 +67,6 @@ const Nweet = ({ nweetObj, isOwner }) => {
             )}
         </div>
     );
-}
+};
 
 export default Nweet;

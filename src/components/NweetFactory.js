@@ -1,4 +1,4 @@
-import { dbService, firebaseInstance, storageService } from "fbase";
+import { dbService, storageService } from "fbase";
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -66,7 +66,7 @@ const NweetFactory = ({ userObj }) => {
                 />
                 <input type="submit" value="&rarr;" className="factoryInput__arrow" />
             </div>
-            <label for="attach-file" className="factoryInput__label">
+            <label htmlFor="attach-file" className="factoryInput__label">
                 <span>Add photos</span>
                 <FontAwesomeIcon icon={faPlus} />
             </label>
@@ -85,6 +85,7 @@ const NweetFactory = ({ userObj }) => {
                         style={{
                             backgroundImage: attachment,
                         }}
+                        alt="pre_img"
                     />
                     <div className="factoryForm__clear" onClick={onClearAttachment}>
                         <span>Remove</span>
