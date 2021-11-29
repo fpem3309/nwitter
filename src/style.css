@@ -352,7 +352,55 @@ form {
     text-shadow: 0 1px 0 rgba(black, .1);
     text-indent: .3em;
   }
+
+  .nav_menu{
+    display: flex;
+    list-style: none;
+    padding-left: 0;
+  }
+  .nav_menu li{
+    padding: 8px 12px;
+  }
+  .nav_icon{
+    display: flex;
+    list-style: none;
+    padding-left: 0;
+  }
+  .nav_icon li{
+    padding: 8px 12px;
+  }
+  .nav_toogleBtn{
+    display: none;
+    position:absolute;
+    right: 32px;
+    top: 10px;
+    font-size: 25px;
+  }
+
   @keyframes drift {
     from { transform: rotate(0deg); }
     from { transform: rotate(360deg); }
+  }
+
+  /* 반응형 */
+  @media screen and (max-width:700px) {
+    .navbar{
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    .nav_menu{
+      display: none;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+    }
+    .nav_icon{
+      justify-content: center;
+    }
+    .nav_toogleBtn{
+      display: block;
+    }
+    .nav_menu.active{
+      display: flex;
+    }
   }
