@@ -12,9 +12,19 @@ const Navigation = ({ userObj }) => {
     return (
         <>
             <nav className="navbar">
+                <button href="#" className="nav_toogleBtn" onClick={() => toggleMenu()}>
+                    <FontAwesomeIcon icon={faBars} color={"#04aaFF"} />
+                </button>
+
                 <div>
                     <Link to="#">Home coding</Link>
                 </div>
+
+                <ul className="nav_icon">
+                    <li><FontAwesomeIcon icon={faInstagram} color={"#04aaFF"} /><a href="https://www.instagram.com/k_gwan/">Instagram</a></li>
+                    <li><FontAwesomeIcon icon={faBlog} color={"#04aaFF"} /><a href="https://fpem3309.tistory.com/">Blog</a></li>
+                    <li><FontAwesomeIcon icon={faYoutube} color={"#04aaFF"} /><a href="https://www.youtube.com/channel/UCNhofiqfw5nl-NeDJkXtPvw" >Pani</a></li>
+                </ul>
 
                 <ul className={isOpen ? "nav_menu" : "hide_nav_menu"}>
                     <li><FontAwesomeIcon icon={faQuran} color={"#04AAFF"} /><Link to="/">{userObj.displayName}의 Diary</Link></li>
@@ -26,15 +36,7 @@ const Navigation = ({ userObj }) => {
                     <li><Link to="/" >test item</Link></li>
                 </ul>
 
-                <ul className="nav_icon">
-                    <li><FontAwesomeIcon icon={faInstagram} color={"#04aaFF"} /><a href="https://www.instagram.com/k_gwan/">Instagram</a></li>
-                    <li><FontAwesomeIcon icon={faBlog} color={"#04aaFF"} /><a href="https://fpem3309.tistory.com/">Blog</a></li>
-                    <li><FontAwesomeIcon icon={faYoutube} color={"#04aaFF"} /><a href="https://www.youtube.com/channel/UCNhofiqfw5nl-NeDJkXtPvw" >Pani</a></li>
-                </ul>
 
-                <button href="#" className="nav_toogleBtn" onClick={() => toggleMenu()}>
-                    <FontAwesomeIcon icon={faBars} color={"#04aaFF"} />
-                </button>
             </nav>
         </>
     );
