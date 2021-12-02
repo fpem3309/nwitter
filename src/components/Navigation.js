@@ -9,6 +9,11 @@ const Navigation = ({ userObj }) => (
             <li>
                 <Link to="/" style={{ marginRight: 10 }}>
                     <FontAwesomeIcon icon={faQuran} color={"#04AAFF"} size="2x" />
+                    <span style={{ marginTop: 10 }}>
+                        {userObj.displayName
+                            ? `${userObj.displayName}의 Diary`
+                            : "Diary"}
+                    </span>
                 </Link>
             </li>
             <li>

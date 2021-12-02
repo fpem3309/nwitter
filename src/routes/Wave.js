@@ -1,7 +1,8 @@
 import { faInstagram, faYoutube } from "@fortawesome/free-brands-svg-icons";
-import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faBlog } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 // const toggleBtn = document.querySelector('nav_toggleBtn');
 // const menu = document.querySelector('nav_menu');
@@ -16,32 +17,31 @@ import { useState } from "react";
 
 
 const Wave = () => {
-    const [toggleMenu, setToggleMenu] = useState(false);
-    const [toggleBar, setToggleBar] = useState(true);
+    const [isOpen, setMenu] = useState(false);  // 메뉴의 초기값을 false로 설정
 
-    const bar = () => {
-        setToggleMenu(!toggleMenu);
-        setToggleBar(!toggleBar)
+    const toggleMenu = () => {
+        setMenu(isOpen => !isOpen); // on, off 개념 boolean
     }
     return (
         <>
             <nav className="navbar">
                 <div>
-                    <a href="">Home coding</a>
+                    <Link to="#">Home coding</Link>
                 </div>
 
-                <ul className="nav_menu">
-                    <li><a href="" >Home</a></li>
-                    <li><a href="" >Gallery</a></li>
-                    <li><a href="" >Weddings</a></li>
+                <ul className={isOpen ? "nav_menu" : "hide_nav_menu"}>
+                    <li><Link to="/">Home</Link></li>
+                    <li><Link to="/profile" >profile</Link></li>
+                    <li><Link to="/lotto" >lotto</Link></li>
                 </ul>
 
                 <ul className="nav_icon">
                     <li><FontAwesomeIcon icon={faInstagram} color={"#04aaFF"} /><a href="https://www.instagram.com/k_gwan/">Instagram</a></li>
+                    <li><FontAwesomeIcon icon={faBlog} color={"#04aaFF"} /><a href="https://fpem3309.tistory.com/">Blog</a></li>
                     <li><FontAwesomeIcon icon={faYoutube} color={"#04aaFF"} /><a href="https://www.youtube.com/channel/UCNhofiqfw5nl-NeDJkXtPvw" >Pani</a></li>
                 </ul>
 
-                <button href="#" className="nav_toogleBtn" onClick={bar}>
+                <button href="#" className="nav_toogleBtn" onClick={() => toggleMenu()}>
                     <FontAwesomeIcon icon={faBars} color={"#04aaFF"} />
                 </button>
             </nav>

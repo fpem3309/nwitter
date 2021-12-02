@@ -295,6 +295,7 @@ form {
     position: relative;
     overflow: hidden;
     transform: translate3d(0, 0, 0);
+    z-index: -1;
   }
   
   .wave {
@@ -372,8 +373,8 @@ form {
   .nav_toogleBtn{
     display: none;
     position:absolute;
-    right: 32px;
-    top: 10px;
+    left: 2%;
+    top: 2%;
     font-size: 25px;
   }
 
@@ -385,6 +386,7 @@ form {
   /* 반응형 */
   @media screen and (max-width:700px) {
     .navbar{
+      margin-top: 50px;
       flex-direction: column;
       align-items: flex-start;
     }
@@ -394,13 +396,17 @@ form {
       align-items: center;
       width: 100%;
     }
+    .hide_nav_menu{
+      position: absolute;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      height: 700px;
+    }
     .nav_icon{
       justify-content: center;
     }
     .nav_toogleBtn{
       display: block;
-    }
-    .nav_menu.active{
-      display: flex;
     }
   }
