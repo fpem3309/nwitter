@@ -12,7 +12,7 @@ const AppRouter = ({ refreshUser, isLoggedIn, userObj }) => {
 
 
         <Router>
-            <Wave />
+            <Wave userObj={userObj} />
             {isLoggedIn && <Navigation userObj={userObj} />}
             <Switch>
                 {isLoggedIn ? (

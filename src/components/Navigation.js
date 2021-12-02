@@ -1,54 +1,42 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { faGrinStars, faQuran, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faBars, faBlog, faGrinStars, faQuran, faUser } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faInstagram, faYoutube } from '@fortawesome/free-brands-svg-icons';
 
-const Navigation = ({ userObj }) => (
-    <nav>
-        <ul style={{ display: "flex", justifyContent: "center", marginTop: 50 }}>
-            <li>
-                <Link to="/" style={{ marginRight: 10 }}>
-                    <FontAwesomeIcon icon={faQuran} color={"#04AAFF"} size="2x" />
-                    <span style={{ marginTop: 10 }}>
-                        {userObj.displayName
-                            ? `${userObj.displayName}의 Diary`
-                            : "Diary"}
-                    </span>
-                </Link>
-            </li>
-            <li>
-                <Link
-                    to="/profile"
-                    style={{
-                        marginLeft: 10,
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                        fontSize: 12,
-                    }}
-                >
-                    <FontAwesomeIcon icon={faUser} color={"#04AAFF"} size="2x" />
-                    <span style={{ marginTop: 10 }}>
-                        {userObj.displayName
-                            ? `${userObj.displayName}의 Profile`
-                            : "Profile"}
-                    </span>
-                </Link>
-            </li>
-            <li>
-                <Link to="/lotto"
-                    style={{
-                        marginLeft: 10,
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                        fontSize: 12,
-                    }}
-                >
-                    <FontAwesomeIcon icon={faGrinStars} color={"#04aaFF"} size="2x" />
-                </Link>
-            </li>
-        </ul>
-    </nav>
-);
+const Navigation = ({ userObj }) => {
+    const [isOpen, setMenu] = useState(false);  // 메뉴의 초기값을 false로 설정
+    const toggleMenu = () => {
+        setMenu(isOpen => !isOpen); // on, off 개념 boolean
+    }
+    return (
+        <>
+            <nav className="navbar">
+                <div>
+                    <Link to="#">Home coding</Link>
+                </div>
+
+                <ul className={isOpen ? "nav_menu" : "hide_nav_menu"}>
+                    <li><FontAwesomeIcon icon={faQuran} color={"#04AAFF"} /><Link to="/">{userObj.displayName}의 Diary</Link></li>
+                    <li><FontAwesomeIcon icon={faUser} color={"#04AAFF"} /><Link to="/profile" >{userObj.displayName}의 Profile</Link></li>
+                    <li><FontAwesomeIcon icon={faGrinStars} color={"#04aaFF"} /><Link to="/lotto" >Lotto 자동뽑기!</Link></li>
+                    <li><Link to="/" >test item</Link></li>
+                    <li><Link to="/" >test item</Link></li>
+                    <li><Link to="/" >test item</Link></li>
+                    <li><Link to="/" >test item</Link></li>
+                </ul>
+
+                <ul className="nav_icon">
+                    <li><FontAwesomeIcon icon={faInstagram} color={"#04aaFF"} /><a href="https://www.instagram.com/k_gwan/">Instagram</a></li>
+                    <li><FontAwesomeIcon icon={faBlog} color={"#04aaFF"} /><a href="https://fpem3309.tistory.com/">Blog</a></li>
+                    <li><FontAwesomeIcon icon={faYoutube} color={"#04aaFF"} /><a href="https://www.youtube.com/channel/UCNhofiqfw5nl-NeDJkXtPvw" >Pani</a></li>
+                </ul>
+
+                <button href="#" className="nav_toogleBtn" onClick={() => toggleMenu()}>
+                    <FontAwesomeIcon icon={faBars} color={"#04aaFF"} />
+                </button>
+            </nav>
+        </>
+    );
+}
 export default Navigation;
