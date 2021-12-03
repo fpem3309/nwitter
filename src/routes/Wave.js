@@ -6,7 +6,7 @@ const Wave = () => {
                 <div className='wave -one'></div>
                 <div className='wave -two'></div>
                 <div className='wave -three'></div>
-                <div className='title'>React 연습중</div>
+                <div className='title'>React JS</div>
             </div>
         </>
     );

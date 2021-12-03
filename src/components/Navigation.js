@@ -29,7 +29,7 @@ const Navigation = ({ userObj }) => {
                 <ul className={isOpen ? "nav_menu" : "hide_nav_menu"}>
                     <li><FontAwesomeIcon icon={faQuran} color={"#04AAFF"} /><Link to="/">{userObj.displayName}의 Diary</Link></li>
                     <li><FontAwesomeIcon icon={faUser} color={"#04AAFF"} /><Link to="/profile" >{userObj.displayName}의 Profile</Link></li>
-                    <li><FontAwesomeIcon icon={faGrinStars} color={"#04aaFF"} /><Link to="/lotto" >Lotto 자동뽑기!</Link></li>
+                    <li><FontAwesomeIcon icon={faGrinStars} color={"#04aaFF"} /><Link to="/lotto" >Lotto 자동뽑기!!</Link></li>
                     <li><Link to="/" >test item</Link></li>
                     <li><Link to="/" >test item</Link></li>
                     <li><Link to="/" >test item</Link></li>

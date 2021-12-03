@@ -9,8 +9,6 @@ import Wave from "routes/Wave";
 
 const AppRouter = ({ refreshUser, isLoggedIn, userObj }) => {
     return (
-
-
         <Router>
             <Wave userObj={userObj} />
             {isLoggedIn && <Navigation userObj={userObj} />}

@@ -9,7 +9,7 @@ const Nweet = ({ nweetObj, isOwner }) => {
     const [newNweet, setNewNweet] = useState(nweetObj.text);  // input에 입력된 text 업데이트
 
     const onDeleteClick = async () => {
-        const ok = window.confirm("ㄹㅇ 삭제??");
+        const ok = window.confirm("진짜 삭제할거냐??");
         console.log(ok)
         if (ok) {
             await dbService.doc(`nweets/${nweetObj.id}`).delete(); // documentPath = 위치

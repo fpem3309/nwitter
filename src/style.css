@@ -353,6 +353,8 @@ form {
     text-shadow: 0 1px 0 rgba(black, .1);
     text-indent: .3em;
   }
+
+  /* navigation */
   .navbar{
     position: absolute;
   }
