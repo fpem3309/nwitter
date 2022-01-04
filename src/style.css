@@ -423,6 +423,8 @@ form {
     .nav_icon{
       justify-content: center;
       margin-top: 10px;
+      margin-left: 150px;
+
     }
     .nav_toogleBtn{
       display: block;

@@ -32,8 +32,6 @@ const Navigation = ({ userObj }) => {
                     <li><FontAwesomeIcon icon={faGrinStars} color={"#04aaFF"} /><Link to="/lotto" >Lotto 자동뽑기!!</Link></li>
                     <li><Link to="/board" >게시판 test</Link></li>
                     <li><Link to="/postlist" >게시판</Link></li>
-                    <li><Link to="/" >test item</Link></li>
-                    <li><Link to="/" >test item</Link></li>
                 </ul>
 
 

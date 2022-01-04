@@ -36,6 +36,8 @@ function App() {
   return (
     <>
       {init ? <AppRouter refreshUser={refreshUser} isLoggedIn={Boolean(userObj)} userObj={userObj} /> : "기달기달 기달기달"}
+      <div className="App">
+      </div>
     </>
   );
 }

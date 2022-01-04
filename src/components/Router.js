@@ -1,5 +1,5 @@
 import React from "react";
-import { HashRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter, HashRouter as Router, Route, Switch } from "react-router-dom";
 import Auth from "../routes/Auth";
 import Home from "../routes/Home";
 import Profile from "routes/Profile";
@@ -8,6 +8,8 @@ import Lotto from "routes/Lotto";
 import Wave from "routes/Wave";
 import Board from "routes/Board";
 import PostList from "routes/PostList";
+import PostView from "routes/PostView";
+import PostMain from "routes/PostMain";
 
 const AppRouter = ({ refreshUser, isLoggedIn, userObj }) => {
     return (
@@ -42,6 +44,10 @@ const AppRouter = ({ refreshUser, isLoggedIn, userObj }) => {
                             <Route exact path="/postlist">
                                 <PostList />
                             </Route>
+                            <BrowserRouter>
+                                <Route exact path='/postView/:no' component={PostView} />
+                                <Route exact path='/' component={PostMain} />
+                            </BrowserRouter>
                         </div>
                     </>
                 ) : (
