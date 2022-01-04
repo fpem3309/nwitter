@@ -44,10 +44,10 @@ const AppRouter = ({ refreshUser, isLoggedIn, userObj }) => {
                             <Route exact path="/postlist">
                                 <PostList />
                             </Route>
-                            <BrowserRouter>
-                                <Route exact path='/postView/:no' component={PostView} />
-                                <Route exact path='/postMain' component={PostMain} />
-                            </BrowserRouter>
+                            {/* <BrowserRouter> */}
+                            <Route exact path='/postView/:no' component={PostView} />
+                            <Route exact path='/postMain' component={PostMain} />
+                            {/* </BrowserRouter> */}
                         </div>
                     </>
                 ) : (
