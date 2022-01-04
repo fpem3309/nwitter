@@ -26,12 +26,12 @@ const Navigation = ({ userObj }) => {
                     <li><FontAwesomeIcon icon={faYoutube} color={"#04aaFF"} /><a href="https://www.youtube.com/channel/UCNhofiqfw5nl-NeDJkXtPvw" >Pani</a></li>
                 </ul>
 
-                <ul className={isOpen ? "nav_menu" : "hide_nav_menu"}>
+                <ul className={isOpen ? "hide_nav_menu" : "nav_menu"}>
                     <li><FontAwesomeIcon icon={faQuran} color={"#04AAFF"} /><Link to="/">{userObj.displayName}의 Diary</Link></li>
                     <li><FontAwesomeIcon icon={faUser} color={"#04AAFF"} /><Link to="/profile" >{userObj.displayName}의 Profile</Link></li>
                     <li><FontAwesomeIcon icon={faGrinStars} color={"#04aaFF"} /><Link to="/lotto" >Lotto 자동뽑기!!</Link></li>
-                    <li><Link to="/" >test item</Link></li>
-                    <li><Link to="/" >test item</Link></li>
+                    <li><Link to="/board" >게시판 test</Link></li>
+                    <li><Link to="/postlist" >게시판</Link></li>
                     <li><Link to="/" >test item</Link></li>
                     <li><Link to="/" >test item</Link></li>
                 </ul>

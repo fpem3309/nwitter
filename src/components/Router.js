@@ -6,6 +6,8 @@ import Profile from "routes/Profile";
 import Navigation from "components/Navigation";
 import Lotto from "routes/Lotto";
 import Wave from "routes/Wave";
+import Board from "routes/Board";
+import PostList from "routes/PostList";
 
 const AppRouter = ({ refreshUser, isLoggedIn, userObj }) => {
     return (
@@ -33,6 +35,12 @@ const AppRouter = ({ refreshUser, isLoggedIn, userObj }) => {
                             </Route>
                             <Route exact path="/lotto">
                                 <Lotto />
+                            </Route>
+                            <Route exact path="/board">
+                                <Board />
+                            </Route>
+                            <Route exact path="/postlist">
+                                <PostList />
                             </Route>
                         </div>
                     </>
