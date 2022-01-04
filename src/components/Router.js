@@ -46,7 +46,7 @@ const AppRouter = ({ refreshUser, isLoggedIn, userObj }) => {
                             </Route>
                             <BrowserRouter>
                                 <Route exact path='/postView/:no' component={PostView} />
-                                <Route exact path='/' component={PostMain} />
+                                <Route exact path='/postMain' component={PostMain} />
                             </BrowserRouter>
                         </div>
                     </>
