@@ -38,7 +38,7 @@ const postList = [
 
 const getPostByNo = no => {
     const array = postList.filter(x => x.no == no);
-    if (array.length == 1) {
+    if (array.length === 1) {
         return array[0];
     }
     return null;

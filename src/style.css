@@ -404,11 +404,11 @@ form {
       align-items: center;
       width: 100%;
     }
-    .hide_nav_menu{
+    .hide_nav_menu {
       flex-direction: column;
       align-items: center;
       width: 50%;
-      height: 400px;
+      height: 200px;
       margin-top: 20px;
       font-size: 17px;
     }

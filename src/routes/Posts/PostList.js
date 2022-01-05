@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import CommonTable from 'routes/CommonTable';
-import CommonTableColumn from 'routes/CommonTableColumn';
-import CommonTableRow from 'routes/CommonTableRow';
-import { postList } from '../Data';
+import CommonTable from 'routes/Commons/CommonTable';
+import CommonTableColumn from 'routes/Commons/CommonTableColumn';
+import CommonTableRow from 'routes/Commons/CommonTableRow';
+import { postList } from '../../Data';
 
 
 const PostList = props => {
