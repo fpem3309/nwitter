@@ -38,6 +38,12 @@ const Nweet = ({ nweetObj, isOwner }) => {
         } = event;
         setNewNweet(value);
     };
+
+
+    const test = () => {
+        alert(dbService.doc(`nweets/${nweetObj.id}`).id);
+    }
+
     return (
         <div className="nweet">
             {editing ? (
@@ -58,19 +64,21 @@ const Nweet = ({ nweetObj, isOwner }) => {
                 </>
             ) : (
                 <>
-                    <h4>{nweetObj.text}</h4>
-                    <h4>{year}-{month}-{day} {hour}:{minute}</h4>
-                    {nweetObj.attachmentUrl && <img src={nweetObj.attachmentUrl} alt="upload_img" />}
-                    {isOwner && (
-                        <div className="nweet__actions">
-                            <span onClick={toggleEditing}>
-                                <FontAwesomeIcon icon={faPencilAlt} />
-                            </span>
-                            <span onClick={onDeleteClick}>
-                                <FontAwesomeIcon icon={faTrash} />
-                            </span>
-                        </div>
-                    )}
+                    <div onClick={test}>
+                        <h4>{nweetObj.text}</h4>
+                        <h4>{year}-{month}-{day} {hour}:{minute}</h4>
+                        {nweetObj.attachmentUrl && <img src={nweetObj.attachmentUrl} alt="upload_img" />}
+                        {isOwner && (
+                            <div className="nweet__actions">
+                                <span onClick={toggleEditing}>
+                                    <FontAwesomeIcon icon={faPencilAlt} />
+                                </span>
+                                <span onClick={onDeleteClick}>
+                                    <FontAwesomeIcon icon={faTrash} />
+                                </span>
+                            </div>
+                        )}
+                    </div>
                 </>
             )}
         </div>
