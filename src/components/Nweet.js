@@ -2,6 +2,7 @@ import { dbService, storageService } from 'fbase';
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash, faPencilAlt } from "@fortawesome/free-solid-svg-icons";
+import { Link } from 'react-router-dom';
 
 const Nweet = ({ nweetObj, isOwner }) => {
 
@@ -40,10 +41,6 @@ const Nweet = ({ nweetObj, isOwner }) => {
     };
 
 
-    const test = () => {
-        alert(dbService.doc(`nweets/${nweetObj.id}`).id);
-    }
-
     return (
         <div className="nweet">
             {editing ? (
@@ -64,7 +61,7 @@ const Nweet = ({ nweetObj, isOwner }) => {
                 </>
             ) : (
                 <>
-                    <div onClick={test}>
+                    <Link to={`/postView/${nweetObj.id}`}>
                         <h4>{nweetObj.text}</h4>
                         <h4>{year}-{month}-{day} {hour}:{minute}</h4>
                         {nweetObj.attachmentUrl && <img src={nweetObj.attachmentUrl} alt="upload_img" />}
@@ -78,7 +75,7 @@ const Nweet = ({ nweetObj, isOwner }) => {
                                 </span>
                             </div>
                         )}
-                    </div>
+                    </Link>
                 </>
             )}
         </div>
