@@ -2,13 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { getPostByNo } from '../../Data';
 import './Post.css';
 
+
 const PostView = ({ history, location, match }) => {
-    const [data, setData] = useState({});
+    const [data, setData] = useState([]);
 
     const { no } = match.params;
+    console.log(no);
+
 
     useEffect(() => {
-        setData(getPostByNo(no));
+        setData((no));
     }, [no]);
 
     return (
@@ -21,7 +24,7 @@ const PostView = ({ history, location, match }) => {
                         <>
                             <div className="post-view-row">
                                 <label>게시글 번호</label>
-                                <label>{data.no}</label>
+                                <label>{data.text}</label>
                             </div>
                             <div className="post-view-row">
                                 <label>제목</label>
