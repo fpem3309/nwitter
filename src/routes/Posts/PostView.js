@@ -1,14 +1,34 @@
 import React, { useEffect, useState } from 'react';
 import { getPostByNo } from '../../Data';
 import './Post.css';
+import { dbService, storageService } from 'fbase';
+
+
+
 
 
 const PostView = ({ history, location, match }) => {
     const [data, setData] = useState([]);
-
+    const [test, setTest] = useState({});
     const { no } = match.params;
-    console.log(no);
+    //console.log(no);
+    var docRef = dbService.collection("nweets").get().then((결과) => {
+        결과.forEach((doc) => {
+            console.log(doc.data().text)
+        });
+    });
 
+
+
+    // docRef.get().then((doc) => {
+    //     console.log(doc.data())
+    // });
+
+    // dbService.collection('nweets').get().then((결과) => {
+    //     결과.forEach((doc) => {
+    //         console.log(doc.data())
+    //     })
+    // });
 
     useEffect(() => {
         setData((no));
